@@ -33,7 +33,7 @@ async function initializeApp() {
 // Ładowanie danych
 async function loadEvents() {
     try {
-        const response = await fetch('../data/events.json');
+        const response = await fetch('data/events.json');
         if (!response.ok) {
             throw new Error('Nie można załadować danych');
         }
