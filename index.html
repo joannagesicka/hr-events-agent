@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wydarzenia HR Polska - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>Wydarzenia HR Polska</h1>
+            <p>Najważniejsze konferencje, konkursy i wydarzenia HR w Polsce</p>
+            <div class="update-info">
+                <i class="fas fa-calendar"></i>
+                <span id="lastUpdate">Ostatnia aktualizacja: ładowanie...</span>
+                <span>• Automatyczne usuwanie przeszłych wydarzeń</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Najnowsze dodatki -->
+        <section class="new-events-section">
+            <div class="new-events-card">
+                <div class="section-header">
+                    <i class="fas fa-star"></i>
+                    <h2>Najnowsze dodatki</h2>
+                    <span class="badge" id="newEventsCount">0 nowych wydarzeń</span>
+                </div>
+                
+                <div class="new-events-grid" id="newEventsGrid">
+                    <!-- Nowe wydarzenia będą wstawione tutaj przez JavaScript -->
+                </div>
+                
+                <button class="btn btn-primary" id="showAllNewBtn">
+                    Zobacz wszystkie nowe wydarzenia (<span id="newEventsTotal">0</span>)
+                </button>
+            </div>
+        </section>
+
+        <!-- Statystyki -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-calendar"></i>
+                    <div class="stat-number" id="totalEvents">0</div>
+                    <div class="stat-label">Nadchodzące wydarzenia</div>
+                    <div class="stat-note">Posortowane chronologicznie ✓</div>
+                </div>
+                
+                <div class="stat-card">
+                    <i class="fas fa-star"></i>
+                    <div class="stat-number" id="newEventsStats">0</div>
+                    <div class="stat-label">Nowe wydarzenia</div>
+                </div>
+                
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <div class="stat-number" id="deadlineEvents">0</div>
+                    <div class="stat-label">Z deadline'ami</div>
+                </div>
+                
+                <div class="stat-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div class="stat-number" id="urgentEvents">0</div>
+                    <div class="stat-label">Pilne deadline'y</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filtry i wyszukiwanie -->
+        <section class="filters-section">
+            <div class="filters-card">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Szukaj wydarzeń, opisów, tagów...">
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Kategorie</h3>
+                    <div class="filter-buttons" id="categoryFilters">
+                        <!-- Kategorie będą wstawione przez JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Filtry</h3>
+                    <div class="filter-buttons" id="typeFilters">
+                        <!-- Filtry będą wstawione przez JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lista wydarzeń -->
+        <section class="events-section">
+            <h2>Wszystkie wydarzenia (posortowane chronologicznie)</h2>
+            <div class="events-count" id="eventsCount">0 wydarzeń</div>
+            
+            <div class="events-list" id="eventsList">
+                <!-- Wydarzenia będą wstawione tutaj przez JavaScript -->
+            </div>
+        </section>
+
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            <i class="fas fa-spinner fa-spin"></i>
+            <span>Ładowanie wydarzeń...</span>
+        </div>
+
+        <!-- Error -->
+        <div class="error" id="error" style="display: none;">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>Błąd podczas ładowania wydarzeń. Spróbuj odświeżyć stronę.</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <span>Made with</span>
+                <i class="fas fa-heart"></i>
+                <span>Manus</span>
+                <a href="#" class="footer-link">Create my website</a>
+            </div>
+            <div class="agent-info">
+                <i class="fas fa-robot"></i>
+                <span>Automatycznie aktualizowane przez GitHub Actions</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
