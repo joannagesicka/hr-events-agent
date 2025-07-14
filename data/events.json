@@ -1,0 +1,32 @@
+{
+  "events": [
+    {
+      "id": "deloitte-fast-50-2025",
+      "title": "Deloitte Technology Fast 50 Central Europe 2025",
+      "date": "2025-08-31",
+      "location": "Europa Środkowa",
+      "category": "Konkursy",
+      "status": "Potwierdzone",
+      "isNew": true,
+      "description": "Ranking najszybciej rozwijających się firm technologicznych w Europie Środkowej. 4 kategorie: Technology Fast 50, Companies to Watch, Impact Stars, AI Value Driver. Kryteria: minimum 4 lata działalności, własność intelektualna, przychody €50k-100k.",
+      "tags": ["technologia", "ranking", "konkurs", "Europa"],
+      "pricing": "Darmowy",
+      "hasDeadline": true,
+      "addedDate": "2025-07-14"
+    },
+    {
+      "id": "hr-summit-2025",
+      "title": "HR Summit 2025",
+      "date": "2025-09-15",
+      "location": "Warszawa",
+      "category": "Konferencje",
+      "status": "Potwierdzone",
+      "isNew": true,
+      "description": "Największa konferencja HR w Polsce. Prelegenci z całego świata, warsztaty, networking.",
+      "tags": ["konferencja", "HR", "networking"],
+      "pricing": "Płatny",
+      "hasDeadline": false,
+      "addedDate": "2025-07-01"
+    }
+  ]
+}
