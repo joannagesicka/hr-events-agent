@@ -1,0 +1,75 @@
+name: Update HR Events
+
+on:
+  # Uruchamianie codziennie o 6:00 rano
+  schedule:
+    - cron: '0 6 * * *'  # UTC time (6:00 rano UTC = 8:00 CEST)
+  
+  # Uruchamianie ręcznie z interfejsu GitHub
+  workflow_dispatch:
+  
+  # Uruchamianie przy push do main (opcjonalnie)
+  push:
+    branches: [ main ]
+    paths:
+      - 'data/**'
+      - 'scripts/**'
+      - 'src/**'
+
+jobs:
+  update-events:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Checkout kodu
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      # Konfiguracja Pythona
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      # Instalacja zależności
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
+      
+      # Uruchomienie scrapera
+      - name: Run events scraper
+        run: |
+          python scripts/scraper.py
+      
+      # Sprawdzenie czy są zmiany
+      - name: Check for changes
+        id: git-check
+        run: |
+          git status
+          git diff --exit-code --quiet data/events.json || echo "changes=true" >> $GITHUB_OUTPUT
+      
+      # Commit zmian jeśli są
+      - name: Commit changes
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/events.json data/scraper_log.txt
+          git commit -m "Auto-update events data [skip ci]"
+      
+      # Push zmian
+      - name: Push changes
+        if: steps.git-check.outputs.changes == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+      
+      # Deployment na GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: src
+          branch: gh-pages
+          clean: true
